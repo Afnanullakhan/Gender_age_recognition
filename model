@@ -1,1 +1,17 @@
+### Folder: model
+# This folder will contain the trained model file after training (age_gender_model.h5).
+# You don’t need to create a code file here; just place the .h5 file after training.
 
+
+### Folder: data/dataset
+# Place your dataset here (e.g., UTKFace images organized in subfolders for age/gender classes).
+
+
+### File: app/preprocess.py
+import cv2
+
+def detect_face(img):
+    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    return faces
